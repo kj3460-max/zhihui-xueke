@@ -1,0 +1,172 @@
+.records-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  padding: 32rpx;
+}
+
+/* 概览卡片 */
+.overview-card {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  border-radius: 40rpx;
+  padding: 40rpx;
+  color: #ffffff;
+  box-shadow: 0 12rpx 32rpx rgba(99, 102, 241, 0.25);
+  margin-bottom: 48rpx;
+}
+
+.overview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.overview-title {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.overview-date {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+.overview-stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.stat-val {
+  font-size: 48rpx;
+  font-weight: 800;
+  margin-bottom: 8rpx;
+}
+
+.stat-desc {
+  font-size: 22rpx;
+  opacity: 0.8;
+}
+
+/* 统计区域 */
+.chart-section, .advice-section {
+  background: #ffffff;
+  border-radius: 32rpx;
+  padding: 32rpx;
+  margin-bottom: 32rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 32rpx;
+  display: flex;
+  align-items: center;
+}
+
+.section-title::before {
+  content: '';
+  width: 8rpx;
+  height: 32rpx;
+  background: #6366f1;
+  border-radius: 4rpx;
+  margin-right: 16rpx;
+}
+
+/* 图谱进度条 */
+.subject-row {
+  margin-bottom: 32rpx;
+}
+
+.subject-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.sub-icon {
+  font-size: 32rpx;
+  margin-right: 12rpx;
+}
+
+.sub-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #334155;
+  flex: 1;
+}
+
+.sub-level {
+  font-size: 20rpx;
+  color: #6366f1;
+  background: #f0f4ff;
+  padding: 2rpx 12rpx;
+  border-radius: 12rpx;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 12rpx;
+  background: #f1f5f9;
+  border-radius: 6rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 6rpx;
+  transition: width 1s ease-out;
+}
+
+.count-text {
+  font-size: 24rpx;
+  color: #94a3b8;
+  width: 60rpx;
+  text-align: right;
+}
+
+/* AI分析卡片 */
+.advice-card {
+  background: #f8fafc;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  display: flex;
+  gap: 20rpx;
+  border: 1rpx solid #e2e8f0;
+}
+
+.advice-icon {
+  font-size: 40rpx;
+}
+
+.advice-text {
+  font-size: 26rpx;
+  line-height: 1.6;
+  color: #475569;
+}
+
+.empty-chart {
+  padding: 60rpx 0;
+  text-align: center;
+  font-size: 24rpx;
+  color: #94a3b8;
+}

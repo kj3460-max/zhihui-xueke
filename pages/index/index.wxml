@@ -1,0 +1,139 @@
+<!--pages/index/index.wxml-->
+<view class="page">
+  <!-- 头部 -->
+  <view class="header">
+    <view class="header-content">
+      <view class="logo-container">
+        <image class="logo-image" src="/images/logo.png" mode="aspectFit"></image>
+        <text class="logo-title">智慧学科实验室</text>
+      </view>
+      
+      <view class="user-info" bindtap="goToProfile">
+        <text class="user-avatar">{{userInfo.avatarUrl ? '' : '👨‍🎓'}}</text>
+        <image wx:if="{{userInfo.avatarUrl}}" class="user-avatar-img" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- 主内容 -->
+  <scroll-view scroll-y class="content">
+    <!-- 高考九科 -->
+    <view class="section">
+      <view class="section-header">
+        <text class="section-title">高考九科</text>
+        <text class="section-count">9位老师</text>
+      </view>
+      <view class="teacher-grid">
+        <view 
+          wx:for="{{coreSubjects}}" 
+          wx:key="name"
+          class="teacher-card"
+          bindtap="selectTeacher"
+          data-teacher="{{item.name}}"
+        >
+          <text class="teacher-icon">{{item.icon}}</text>
+          <text class="teacher-name">{{item.name}}</text>
+          <text class="teacher-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 其他外语 -->
+    <view class="section">
+      <view class="section-header">
+        <text class="section-title">其他外语</text>
+        <text class="section-count">5位老师</text>
+      </view>
+      <view class="teacher-grid">
+        <view 
+          wx:for="{{languages}}" 
+          wx:key="name"
+          class="teacher-card"
+          bindtap="selectTeacher"
+          data-teacher="{{item.name}}"
+        >
+          <text class="teacher-icon">{{item.icon}}</text>
+          <text class="teacher-name">{{item.name}}</text>
+          <text class="teacher-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 艺术类 -->
+    <view class="section">
+      <view class="section-header">
+        <text class="section-title">艺术类</text>
+        <text class="section-count">4位老师</text>
+      </view>
+      <view class="teacher-grid">
+        <view 
+          wx:for="{{arts}}" 
+          wx:key="name"
+          class="teacher-card"
+          bindtap="selectTeacher"
+          data-teacher="{{item.name}}"
+        >
+          <text class="teacher-icon">{{item.icon}}</text>
+          <text class="teacher-name">{{item.name}}</text>
+          <text class="teacher-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 辅助角色 -->
+    <view class="section">
+      <view class="section-header">
+        <text class="section-title">辅助角色</text>
+        <text class="section-count">6位老师</text>
+      </view>
+      <view class="teacher-grid">
+        <view 
+          wx:for="{{support}}" 
+          wx:key="name"
+          class="teacher-card"
+          bindtap="selectTeacher"
+          data-teacher="{{item.name}}"
+        >
+          <text class="teacher-icon">{{item.icon}}</text>
+          <text class="teacher-name">{{item.name}}</text>
+          <text class="teacher-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部间距 -->
+    <view style="height: 40rpx;"></view>
+  </scroll-view>
+
+  <!-- 魔法相机：扫码/拍作业入口 -->
+  <view class="scan-fab" bindtap="onScanHomework">
+    <view class="fab-circle">
+      <text class="fab-icon">📸</text>
+    </view>
+    <text class="fab-text">批改作业</text>
+  </view>
+
+  <!-- 勋章解锁弹窗 -->
+  <view class="medal-popup" wx:if="{{showMedalPopup}}">
+    <view class="medal-mask" bindtap="closeMedalPopup"></view>
+    <view class="medal-card-container">
+      <view class="medal-light"></view>
+      <view class="medal-card-body">
+        <view class="medal-header">
+          <text class="wow-text">恭喜解锁成就！</text>
+        </view>
+        <view class="medal-main">
+          <view class="medal-glow"></view>
+          <view class="medal-big-circle">
+            <text class="medal-big-icon">{{unlockedMedal.icon}}</text>
+          </view>
+        </view>
+        <view class="medal-footer">
+          <text class="medal-big-name">{{unlockedMedal.name}}</text>
+          <text class="medal-big-desc">{{unlockedMedal.condition}}</text>
+        </view>
+        <button class="medal-btn" bindtap="closeMedalPopup">好哒！</button>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,48 @@
+<view class="login-page">
+  <view class="bg-decoration">
+    <view class="circle-1"></view>
+    <view class="circle-2"></view>
+  </view>
+
+  <view class="welcome-container">
+    <view class="logo-area">
+      <view class="logo-box">
+        <text class="logo-icon">🔬</text>
+      </view>
+      <text class="welcome-title">智慧学科实验室</text>
+      <text class="welcome-subtitle">开启你的AI智能学习之旅</text>
+    </view>
+
+    <view class="form-card">
+      <view class="input-group">
+        <text class="label">同学，怎么称呼你？</text>
+        <input class="nickname-input" placeholder="输入你的昵称" placeholder-class="ph" value="{{nickname}}" bindinput="onNameInput" />
+      </view>
+
+      <view class="input-group">
+        <text class="label">你的学号是多少？</text>
+        <input class="nickname-input" type="number" placeholder="输入你的学号" placeholder-class="ph" value="{{studentId}}" bindinput="onIdInput" />
+      </view>
+
+      <view class="input-group">
+        <text class="label">你现在读几年级？</text>
+        <view class="grade-grid">
+          <view wx:for="{{grades}}" wx:key="*this" 
+                class="grade-item {{selectedGrade === item ? 'active' : ''}}" 
+                bindtap="selectGrade" data-val="{{item}}">
+            {{item}}
+          </view>
+        </view>
+      </view>
+
+      <button class="start-btn {{canSubmit ? 'active' : ''}}" bindtap="onSubmit">
+        开始探索
+        <text class="btn-arrow">→</text>
+      </button>
+    </view>
+
+    <view class="footer-tip">
+      <text>你的数据将储存在本地，保护你的成长隐私</text>
+    </view>
+  </view>
+</view>

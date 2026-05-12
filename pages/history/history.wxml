@@ -1,0 +1,25 @@
+<view class="history-page">
+  <view class="empty-state" wx:if="{{historyList.length === 0}}">
+    <text class="empty-icon">💬</text>
+    <text class="empty-text">还没有对话记录</text>
+    <text class="empty-tip">快去和AI老师们聊聊吧</text>
+  </view>
+
+  <scroll-view scroll-y class="history-list" wx:else>
+    <view class="history-item" wx:for="{{historyList}}" wx:key="name" bindtap="goToChat" data-name="{{item.name}}">
+      <view class="teacher-avatar" style="background: {{item.color || '#6366f1'}}">
+        <text class="avatar-icon">{{item.icon}}</text>
+      </view>
+      <view class="item-info">
+        <view class="info-top">
+          <text class="teacher-name">{{item.name}}</text>
+          <text class="last-time">{{item.displayTime}}</text>
+        </view>
+        <view class="info-bottom">
+          <text class="last-msg">{{item.lastMsg}}</text>
+        </view>
+      </view>
+      <text class="arrow">›</text>
+    </view>
+  </scroll-view>
+</view>

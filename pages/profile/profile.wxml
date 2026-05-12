@@ -1,0 +1,148 @@
+<!--pages/profile/profile.wxml-->
+<view class="profile-page">
+  <!-- 顶部个人信息卡片 -->
+  <view class="profile-header">
+    <view class="avatar-container">
+      <view class="avatar">
+        <text class="avatar-icon">👨‍🎓</text>
+      </view>
+      <view class="edit-badge">
+        <text class="edit-icon">✏️</text>
+      </view>
+    </view>
+    <view class="user-info">
+      <text class="username">{{userInfo.nickname || '学生用户'}}</text>
+      <text class="user-id">学号: {{userInfo.studentId || '未填写'}}</text>
+    </view>
+  </view>
+
+  <!-- 数字学生证（二维码） -->
+  <view class="id-card-section">
+    <view class="id-card">
+      <view class="card-left">
+        <text class="card-title">数字学生证</text>
+        <text class="card-subtitle">扫码识别学生身份</text>
+        <view class="id-tag">{{userInfo.studentId}}</view>
+        <text class="print-tip">注：可打印后贴在作业纸上</text>
+      </view>
+      <view class="card-right">
+        <view class="qr-placeholder">
+          <text class="qr-icon">🔳</text>
+          <view class="qr-scan-line"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 学习统计 -->
+  <view class="stats-container">
+    <view class="stat-item">
+      <text class="stat-number">{{stats.totalChats}}</text>
+      <text class="stat-label">对话次数</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-number">{{stats.totalTeachers}}</text>
+      <text class="stat-label">咨询老师</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-number">{{stats.studyDays}}</text>
+      <text class="stat-label">学习天数</text>
+    </view>
+  </view>
+
+  <!-- 勋章墙 -->
+  <view class="medal-section">
+    <view class="section-header">
+      <text class="section-title">我的成就勋章</text>
+      <text class="section-more">更多成就 ›</text>
+    </view>
+    <view class="medal-grid">
+      <block wx:for="{{medals}}" wx:key="id">
+        <view class="medal-item {{item.unlocked ? '' : 'locked'}}">
+          <view class="medal-circle">
+            <text class="medal-icon">{{item.icon}}</text>
+            <view wx:if="{{!item.unlocked}}" class="lock-overlay">🔒</view>
+          </view>
+          <text class="medal-name">{{item.name}}</text>
+          <text class="medal-condition">{{item.unlocked ? '已解锁' : item.condition}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="menu-section">
+    <view class="section-title">我的功能</view>
+    
+    <view class="menu-list">
+      <!-- 对话历史 -->
+      <view class="menu-item" bindtap="goToHistory">
+        <view class="menu-left">
+          <view class="menu-icon" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">
+            <text class="icon">💬</text>
+          </view>
+          <text class="menu-title">对话历史</text>
+        </view>
+        <text class="menu-arrow">›</text>
+      </view>
+
+      <!-- 学习记录 -->
+      <view class="menu-item" bindtap="goToRecords">
+        <view class="menu-left">
+          <view class="menu-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+            <text class="icon">📊</text>
+          </view>
+          <text class="menu-title">学习记录</text>
+        </view>
+        <text class="menu-arrow">›</text>
+      </view>
+
+      <!-- 收藏问题 -->
+      <view class="menu-item" bindtap="goToFavorites">
+        <view class="menu-left">
+          <view class="menu-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+            <text class="icon">⭐</text>
+          </view>
+          <text class="menu-title">收藏问题</text>
+        </view>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 设置菜单 -->
+  <view class="menu-section">
+    <view class="section-title">设置</view>
+    
+    <view class="menu-list">
+      <!-- 清除缓存 -->
+      <view class="menu-item" bindtap="clearCache">
+        <view class="menu-left">
+          <view class="menu-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+            <text class="icon">🗑️</text>
+          </view>
+          <text class="menu-title">清除缓存</text>
+        </view>
+        <text class="menu-arrow">›</text>
+      </view>
+
+      <!-- 关于我们 -->
+      <view class="menu-item" bindtap="goToAbout">
+        <view class="menu-left">
+          <view class="menu-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+            <text class="icon">ℹ️</text>
+          </view>
+          <text class="menu-title">关于我们</text>
+        </view>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 版本信息 -->
+  <view class="version-info">
+    <text class="version-text">智慧学科实验室 v1.0.0</text>
+  </view>
+</view>

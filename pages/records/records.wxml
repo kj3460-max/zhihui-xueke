@@ -1,0 +1,55 @@
+<view class="records-page">
+  <!-- 概览卡片 -->
+  <view class="overview-card">
+    <view class="overview-header">
+      <text class="overview-title">学习足迹</text>
+      <text class="overview-date">{{currentDate}}</text>
+    </view>
+    <view class="overview-stats">
+      <view class="stat-box">
+        <text class="stat-val">{{totalCount}}</text>
+        <text class="stat-desc">累计互动</text>
+      </view>
+      <view class="stat-box">
+        <text class="stat-val">{{activeSubjects}}</text>
+        <text class="stat-desc">活跃学科</text>
+      </view>
+      <view class="stat-box">
+        <text class="stat-val">{{currentLevel.name}}</text>
+        <text class="stat-desc">当前段位</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 学科能力分布 (学习图谱) -->
+  <view class="chart-section">
+    <view class="section-title">学科偏好图谱</view>
+    <view class="radar-container" wx:if="{{subjectsWithData.length > 0}}">
+      <view class="subject-row" wx:for="{{subjectsWithData}}" wx:key="name">
+        <view class="subject-info">
+          <text class="sub-icon">{{item.icon}}</text>
+          <text class="sub-name">{{item.name}}</text>
+          <text class="sub-level">{{item.levelName}}</text>
+        </view>
+        <view class="progress-container">
+          <view class="progress-bar" style="width: {{item.percent}}%; background: {{item.color}}"></view>
+          <text class="count-text">{{item.count}}次</text>
+        </view>
+      </view>
+    </view>
+    <view class="empty-chart" wx:else>
+      <text>暂无详细图谱，快去向老师提问吧</text>
+    </view>
+  </view>
+
+  <!-- 学习建议 -->
+  <view class="advice-section" wx:if="{{subjectsWithData.length > 0}}">
+    <view class="section-title">AI 智能分析</view>
+    <view class="advice-card">
+      <view class="advice-icon">💡</view>
+      <view class="advice-content">
+        <text class="advice-text">{{aiAdvice}}</text>
+      </view>
+    </view>
+  </view>
+</view>

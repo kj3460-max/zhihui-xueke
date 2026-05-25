@@ -64,6 +64,7 @@ App({
       '班主任': { icon: '👩‍🏫', color: '#3b82f6', apiKey: 'YOUR_API_KEY_HERE' },
       '留学顾问': { icon: '✈️', color: '#0ea5e9', apiKey: 'YOUR_API_KEY_HERE' },
       '科技老师': { icon: '💻', color: '#4b5563', apiKey: 'YOUR_API_KEY_HERE' },
+      '西班牙语老师': { icon: '🇪🇸', color: '#c0392b', apiKey: 'YOUR_API_KEY_HERE' },
       '模拟人生': { icon: '🎮', color: '#a855f7', apiKey: 'YOUR_API_KEY_HERE' }
     }
   }
